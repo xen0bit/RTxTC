@@ -53,7 +53,7 @@ async def player_coro(player, rebuild_events_queue, extra_items_queue):
             
             if item.path != current_item_path:
                 # VLC occasionally chokes on playlists and keeps playing what it was playing
-                if item.path.lower().endswith(config.PLAYLIST_EXTENSIONS):
+                if item.path.lower().endswith(tuple(config.PLAYLIST_EXTENSIONS)):
                     player.empty()
                 
                 player.add(item.path)
